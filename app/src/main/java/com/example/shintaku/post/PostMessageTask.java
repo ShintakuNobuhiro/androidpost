@@ -36,9 +36,10 @@ public class PostMessageTask extends AsyncTask<String, Integer, Integer> {
         }
         if(res != null) {
             Log.d("test", String.valueOf(res.getStatusLine().getStatusCode()));
+            return res.getStatusLine().getStatusCode();
+        } else {
+            return -1;
         }
-        
-        return res.getStatusLine().getStatusCode();
     }
 
 }
