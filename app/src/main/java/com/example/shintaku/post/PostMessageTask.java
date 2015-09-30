@@ -22,8 +22,9 @@ public class PostMessageTask extends AsyncTask<String, Integer, Integer> {
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
 
-        ArrayList <NameValuePair> params = new ArrayList<NameValuePair>();
+        ArrayList <NameValuePair> params = new ArrayList<>();
         params.add( new BasicNameValuePair("title", contents[0]));
+        params.add( new BasicNameValuePair("url", contents[1]));
         Log.d("test", String.valueOf(params));
         HttpResponse res = null;
 
@@ -33,9 +34,11 @@ public class PostMessageTask extends AsyncTask<String, Integer, Integer> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.d("test", String.valueOf(res.getStatusLine().getStatusCode()));
-
-        return Integer.valueOf(res.getStatusLine().getStatusCode());
+        if(res != null) {
+            Log.d("test", String.valueOf(res.getStatusLine().getStatusCode()));
+        }
+        
+        return res.getStatusLine().getStatusCode();
     }
 
 }

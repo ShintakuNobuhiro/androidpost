@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 String str = sb.toString();
 
                 PostMessageTask post = new PostMessageTask();
-                post.execute(str);
+                post.execute(str,"http://www.google.com");
             }
         });
     }
